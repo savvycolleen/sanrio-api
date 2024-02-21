@@ -1,0 +1,12 @@
+<h1>Current Sanrio Characters</h1>
+<ul class="sanrio">
+<% for(let i = 0; i < info.length; i++) {%>
+  <li class='sanrio'>
+      <span><%= info[i].fact %></span>
+      <span><%= info[i].birthdate %></span>
+      <span class="del">delete</span>
+  </li>}
+  <% } %>
+</ul>
+
+<h2>Add a Sanrio Character</h2>

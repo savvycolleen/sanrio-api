@@ -4,19 +4,31 @@ const PORT = 8000
 
 //always commas between for objects
 //making all of this stuff lowercase to match our params
-const rappers = {
-  '21 savage': {
-    'age': 29,
-    'birthName': 'Sheyaa Bin Abraham-Joseph'
+const sanrioCharacters = {
+  'charmy kitty': {
+    'fact': "Hello Kitty's pet cat",
+    'birthdate': '2004'
   },
-  'chance the rapper': {
-    'age': 29, 
-    'birthName': 'Chancelor Bennet'
+  'chococat': {
+    'fact': "His whiskers have the ability to pick up things (like information), so he is often first to know about things.", 
+    'birthdate': 'May 10, 1996'
+  },
+  'cinnamoroll': {
+    'fact': "He was originally named 'Baby Cinammon.'", 
+    'birthdate': 'March 6, 2002'
+  },
+  'hello kitty': {
+    'fact': "Hello Kitty is globally known and is the most popular Sanrio character.", 
+    'birthdate': '1974'
+  },
+  'keroppi': {
+    'fact': "A bubbly and adventurous frog with a best friend named Den Den", 
+    'birthdate': 'unknown'
   },
   'unknown': {
-    'age': 0, 
-    'birthName': 'unknown'
-  }
+    'fact': 'This sanrio character has not yet been added to this api.',
+    'birthdate': 'n/a'
+  },
 }
 
 //testing server to see if we can serve up a page
@@ -32,16 +44,17 @@ app.get('/', (request, response) => {
 //you can use whatever you want for 'name' but it's helpfor to know what it is
 app.get('/api/:name', (request, response)=>{
   //this is just saving whatever they put in the url as a variable with lower case letters
-  const rapperName = request.params.name.toLowerCase()
-  console.log(rapperName)
-  if(rappers[rapperName]){
+  const sanrioCharacter = request.params.name.toLowerCase()
+  console.log(sanrioCharacter)
+  if(sanrioCharacters[sanrioCharacter]){
     //this finds the objects with the property in brackets
-    response.json(rappers[rapperName])
+    response.json(sanrioCharacters[sanrioCharacter])
   }else{
-    response.json(rappers['unknown'])
+    response.json(sanrioCharacters['unknown'])
   }
 })
 
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
   console.log(`The server is now running on port ${PORT}! Betta go catch it!`)
 })
+
